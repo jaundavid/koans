@@ -14,7 +14,21 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  if a <= 0 or b <= 0 or c <= 0
+    raise TriangleError, "Too few sides"
+  end
+  if (a+b <= c) or (b+c <= a) or (a+c <= b)
+    raise TriangleError, "Two sides can't sum up less or equal than the other one"
+  end
+  result = :scalene
+  if (a == b) and (b == c)
+    result = :equilateral
+  else
+    if (a == b) or (b == c) or (c == a)
+      result = :isosceles
+    end
+  end
+  return result
 end
 
 # Error class used in part 2.  No need to change this code.
